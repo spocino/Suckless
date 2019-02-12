@@ -11,6 +11,7 @@ st is a simple terminal emulator for X which sucks less.
 ### Requirements
 
 In order to build st you need the Xlib header files.
+The default font in config.h is [SauceCodePro Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro)
 
 
 ### Installation
