@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Script to logout, shutdown, reboot, and lock screen if set
+# when automatically logged in via startx in the ~/.*profile
+# logout is not made available
+
+LOGOUT="Logout"
+REBOOT="Reboot"
+SHTDWN="Shutdown"
+LCKSCR=""
+LCKCMD=""
+
+if [[ $LCKSCR && $LCKCMD ]] && hash $(awk 'print $1' <<< "$LCKCMD") >/dev/null 2>&1; then
+    if grep -q 'exec startx' $HOME/.*profile; then
+        CHOICE="$(printf "%s\n%s\n%s" "$LCKSCR" "$REBOOT" "$SHTDWN" | dmenu "$@")"
+    else
+        CHOICE="$(printf "%s\n%s\n%s\n%s" "$LCKSCR" "$LOGOUT" "$REBOOT" "$SHTDWN" | dmenu "$@")"
+    fi
+elif grep -q 'exec startx' $HOME/.*profile; then
+    CHOICE="$(printf "%s\n%s" "$REBOOT" "$SHTDWN" | dmenu "$@")"
+else
+    CHOICE="$(printf "%s\n%s\n%s" "$LOGOUT" "$REBOOT" "$SHTDWN" | dmenu "$@")"
+fi
+
+case "$CHOICE" in
+    "$LOGOUT")
+        pkill -15 -t tty"$XDG_VTNR" Xorg
+        ;;
+    "$REBOOT")
+        reboot
+        ;;
+    "$SHTDWN")
+        poweroff
+        ;;
+    "$LCKSCR")
+        $LCKCMD
+        ;;
+    *)
+        exit 0
+esac

@@ -1,0 +1,199 @@
+.TH DWM 1 dwm\-VERSION
+.SH NAME
+dwm \- dynamic window manager
+.SH SYNOPSIS
+.B dwm
+.RB [ \-v ]
+.SH DESCRIPTION
+dwm is a dynamic window manager for X. It manages windows in tiled, grid,
+monocle and floating layouts. Layouts can be applied dynamically and
+independently, optimizing the environment for the application in use and
+the task performed.
+.P
+In tiled layouts windows are managed in a master and stacking area. The master
+area on the left contains one window by default, and the stacking area on the
+right contains all other windows. The number of master area windows can be
+adjusted from zero to an arbitrary number. In grid layout the screen space is
+divided between all windows as evenly as possible. In monocle layout all
+windows are maximised to the screen size. In floating layout windows can be
+resized and moved freely. Dialog and fixed size windows are always managed
+floating, regardless of layout.
+.P
+Windows are grouped by tags. Each window can be tagged with one or more tags.
+Selecting one or more tags displays the windows with these tags.
+.P
+Each screen contains a status bar which displays the available tags, layout,
+title of the focused window, and text read from the root window name property,
+if the screen is focused. A floating window is indicated with an empty square
+and a maximised floating window is indicated with a filled square before the
+windows title. The selected tags are indicated with a different color.
+The tags of the focused window are indicated with a filled square in the top
+left corner. The tags which are applied to one or more windows are indicated
+with an empty square in the top left corner.
+.P
+dwm draws a small border around windows to indicate the focus state. Floating
+windows are the exception, they are not bordered by default.
+.SH OPTIONS
+.TP
+.B \-v
+prints version information to standard output, then exits.
+.SH USAGE
+.SS Status bar
+.TP
+.B X root window name
+read and displayed in the status text area, can be set with
+.BR xsetroot(1)
+.TP
+.B Button1
+Click on a tag label to display all windows with that tag, click on the layout
+label toggles between tiled and floating layout.
+.TP
+.B Button2
+Click on status text starts
+.BR st(1)
+.TP
+.B Button3
+Click on tag label adds/removes all windows with that tag to/from the view.
+.TP
+.B Mod1\-Button1
+Click on tag label applies that tag to the focused window.
+.TP
+.B Mod1\-Button3
+Click on tag label adds/removes that tag to/from the focused window.
+.SS Keyboard commands
+.B Mod1\-Shift\-Enter
+and
+.B Mod4\-Enter
+Starts
+.BR st(1)
+terminal
+.TP
+.B Mod1\-p
+and
+.B Mod1\-F1
+Spawns
+.BR dmenu(1)
+program launcher.
+.TP
+.B Mod1\-q
+Close the focused window.
+.TP
+.B Mod1\-b
+Toggle the statusbar on and off.
+.TP
+.B Mod1\-Shift\-t
+Set tag to tiled layout.
+.TP
+.B Mod1\-Shift\-f
+Set tag to floating layout.
+.TP
+.B Mod1\-Shift\-m
+Set tag to monocle layout.
+.TP
+.B Mod1\-Shift\-g
+Set tag to grid layout.
+.TP
+.B Mod1\-space
+Toggle between current and previous layout.
+.TP
+.B Mod1\-Shift\-space
+Toggle window between floating and tiled state.
+.TP
+.B Mod1\-j
+Focus next window and warp the mouse.
+.TP
+.B Mod1\-k
+Focus previous window and warp the mouse.
+.TP
+.B Mod1\-Shift\-j
+Move window down the stack or master and warp the mouse.
+.TP
+.B Mod1\-Shift\-k
+Move window up the stack or master and warp the mouse.
+.TP
+.B Mod1\-i
+Increase number of master windows.
+.TP
+.B Mod1\-d
+Decrease number of master windows.
+.TP
+.B Mod1\-l
+Increase master area size.
+.TP
+.B Mod1\-h
+Decrease master area size.
+.TP
+.B Mod1\-Shift\-l
+Increase stack area horizontal split ratio.
+.TP
+.B Mod1\-Shift\-h
+Decrease stack area horizontal split ratio.
+.TP
+.B Mod1\-+
+Increase current tag gap size.
+.TP
+.B Mod1\--
+Decrease current tag gap size.
+.TP
+.B Mod1\-=
+Reset current tag gap size.
+.TP
+.B Mod1\-,
+Focus the previous screen (if more that one) and warp the mouse.
+.TP
+.B Mod1\-.
+Focus the next screen (if more that one) and warp the mouse.
+.TP
+.B Mod1\-Shift\-,
+Send window to previous screen (if more that one) and warp the mouse.
+.TP
+.B Mod1\-Shift\-.
+Send window to next screen (if more that one) and warp the mouse.
+.TP
+.B Mod1\-Tab
+Cycles window in/out of master area (tile layout only).
+.TP
+.B Mod1\-Shift\-Tab
+Toggle the previously selected tag.
+.TP
+.B Mod1\-Shift\-[1..n]
+Apply nth tag to the focused window and view all windows with nth tag.
+.TP
+.B Mod1\-Shift\-0
+Apply all tags to the focused window.
+.TP
+.B Mod1\-Control\-Shift\-[1..n]
+Add/remove nth tag to/from focused window.
+.TP
+.B Mod1\-[1..n]
+View all windows with nth tag.
+.TP
+.B Mod1\-0
+View all windows from all tags.
+.TP
+.B Mod1\-Control\-[1..n]
+Add/remove all windows with nth tag to/from the view.
+.TP
+.B Pause/Break
+Spawn
+.BR dmenu(1)
+with a logout dialog.
+.TP
+.B Mod1\-Shift\-q
+Quit dwm.
+.SS Mouse commands
+.TP
+.B Mod1\-Button1
+Move focused window while dragging. Tiled windows will be toggled floating.
+.TP
+.B Mod1\-Button2
+Toggle window between floating and tiled state.
+.TP
+.B Mod1\-Button3
+Resize focused window while dragging. Tiled windows will be toggled floating.
+.SH CUSTOMIZATION
+dwm is customized by editing/creating a custom config.h and (re)compiling the
+source code. This keeps it fast, secure and simple.
+.SH SEE ALSO
+.BR dmenu (1),
+.BR st (1)

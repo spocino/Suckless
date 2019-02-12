@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Simple Terminal
+Comment=A simple terminal emulator for X that sucks less
+Exec=/usr/bin/st
+Type=Application
+Icon=utilities-terminal
+Categories=System;TerminalEmulator;
