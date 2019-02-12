@@ -13,6 +13,8 @@ In order to build dwm you need the Xlib header files.
 You also want `st` and my fork of [dmenu](https://bitbucket.org/natemaia/dmenu)
 for the default keybindings to work, or edit `config.def.h`.
 
+The default font in config.h is [SauceCodePro Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro)
+
 ## Patches
 
 - [attachaside](https://dwm.suckless.org/patches/attachaside/)
